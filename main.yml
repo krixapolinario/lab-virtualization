@@ -1,0 +1,8 @@
+---
+- name: Configure Server
+  hosts: all
+  become: true
+
+  tasks:
+  - ansible.builtin.include_tasks: "config-server-{{ ansible_distribution | lower }}.yml"
+    when: ansible_facts['system'] == 'Linux'
